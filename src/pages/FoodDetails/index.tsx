@@ -60,6 +60,10 @@ interface Food {
   extras: Extra[];
 }
 
+// interface Order extend Food {
+
+// }
+
 const FoodDetails: React.FC = () => {
   const [food, setFood] = useState({} as Food);
   const [extras, setExtras] = useState<Extra[]>([]);
@@ -81,6 +85,15 @@ const FoodDetails: React.FC = () => {
         ...extra,
         quantity: 0,
       }));
+
+      // const { data: responseFavorites } = await api.get<Food[]>('favorites');
+      // const favoriteIndex = responseFavorites.findIndex(
+      //   favorite => favorite.id === routeParams.id,
+      // );
+
+      // if (favoriteIndex >= 0) {
+      //   setIsFavorite(true);
+      // }
 
       setExtras(extrasWithQuantity);
 
@@ -148,7 +161,9 @@ const FoodDetails: React.FC = () => {
   }, [extras, food, foodQuantity]);
 
   async function handleFinishOrder(): Promise<void> {
-    // Finish the order and save on the API
+    // await api.post('orders', food);
+    console.log('food', food);
+    navigation.navigate('Home');
   }
 
   // Calculate the correct icon name
