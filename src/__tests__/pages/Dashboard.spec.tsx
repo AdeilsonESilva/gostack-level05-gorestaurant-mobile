@@ -235,9 +235,7 @@ describe('Dashboard', () => {
 
     apiMock.onGet('/categories').reply(200, categories);
 
-    const { getByText, queryByText, getByTestId, debug } = render(
-      <Dashboard />,
-    );
+    const { getByText, queryByText, getByTestId } = render(<Dashboard />);
 
     await wait(() => expect(getByText('Massas')).toBeTruthy(), {
       timeout: 200,
@@ -423,8 +421,6 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-
-    // return debug();
 
     expect(queryByText('Veggie')).toBeFalsy();
 
